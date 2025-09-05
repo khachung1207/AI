@@ -51,10 +51,11 @@ https://raw.githubusercontent.com/espressif/arduino-esp32/gh-pages/package_esp32
 **Bước 2:** Trong Arduino chọn Examples -> EloquentEsp32cam -> Collect_Images_for_EdgeImpulse
 ![ảnh](./imagereadme/Screenshot2025-09-04210521.png)
 
-Dùng example trong WebCamServer để collect data. Có thể download [CameraWebServer](./CameraWebServer) để chụp ảnh
-Tiếp theo, sẽ Thu thập dataset để train trên edge impulse ![](./imagereadme/imagereadme2.png)
+Dùng example trong WebCamServer để collect data. Có thể download [CameraWebServer](./CameraWebServer) để chụp ảnh.
+Tiếp theo, sẽ Thu thập dataset để train trên edge impulse 
 
----
+![](./imagereadme/imagereadme2.png)
+
 và truy cập  [https://docs.edgeimpulse.com/](https://docs.edgeimpulse.com/) để upload dataset.
 
 
@@ -63,6 +64,7 @@ và truy cập  [https://docs.edgeimpulse.com/](https://docs.edgeimpulse.com/) �
 
 **Bước 3:** Thu thập dữ liệu trong Edge Impulse
 ta có thể tìm thấy tùy chọn “Data Acquisition”. Khi nhấp vào đó, bạn sẽ được chuyển đến trang cho phép thêm và gán bounding box
+
 ![](./imagereadme/imagereadme6.png)
 
 **Bước 4: Creating Impulse** 
@@ -70,6 +72,7 @@ Chúng ta sẽ tiến hành tạo một impulse theo quy trình của Edge Impul
 
 **Bước 5: Generating Features**
 Vào **Object detection** chọn learning rate 0.01 model FOMO & MobileNetV2 0.1 (thỏa mãn yêu cầu **F1-Score** và **latency**)
+
 ![](./imagereadme/imagereadme7.png)
 
 ![](./imagereadme/imagereadme8.png)
