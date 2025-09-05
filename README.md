@@ -65,7 +65,7 @@ Sau đó sẽ build model và tải file .zip về
 ![](./imagereadme/imagereadmi9.png)
 
 ---
-Cài đặt thư viện Edge Impulse trong Arduino IDE
+
 
 
 
