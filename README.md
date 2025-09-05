@@ -8,7 +8,6 @@ Kết quả hiển thị qua **WebServer** với ảnh từ camera và số ngư
 **Bước 1:**: Cài đặt thư viện
 ![](./imagereadme/imagereadme5.png)
 
-**Thai Khac Hung**
 **Bước 2:** Trong Arduino chọn Examples -> EloquentEsp32cam -> Collect_Images_for_EdgeImpulse
 ![ảnh](./imagereadme/Screenshot2025-09-04210521.png)
 
@@ -93,7 +92,8 @@ Sketch → Include Library → Add .ZIP Library.
 - Tối ưu cho **low-latency**:
   - Dùng **ảnh đơn /jpg** (mỗi lần request một ảnh) → tránh blocking như MJPEG stream.
   - Inference và web server chạy trên **hai core** độc lập.
-
+![](./imagereadme/imagereadme12.png)
+![](./imagereadme/imagereadme13.png)
 ---
 
 ## 📂 Cấu trúc code
