@@ -5,7 +5,7 @@ Kết quả hiển thị qua **WebServer** với ảnh từ camera và số ngư
 
 ---
 
-**Bước 1:**: Cài đặt thư viện
+**Bước 1:** Cài đặt thư viện
 ![](./imagereadme/imagereadme5.png)
 
 **Bước 2:** Trong Arduino chọn Examples -> EloquentEsp32cam -> Collect_Images_for_EdgeImpulse
@@ -64,7 +64,6 @@ Sau đó sẽ build model và tải file .zip về
 ![](./imagereadme/imagereadmi9.png)
 
 ---
-Cài đặt thư viện Edge Impulse trong Arduino IDE
 
 
 
@@ -79,8 +78,14 @@ Sketch → Include Library → Add .ZIP Library.
 **4.** Sau đó mở ví dụ mẫu (Example) từ thư viện vừa cài đặt và chọn esp32_camera để chạy thử nghiệm.
 
 ![](./imagereadme/imagereadme11.png)
+<p align="center">
+  <img src="./imagereadme/imagereadme14.png" alt="Kết quả huấn luyện mô hình FOMO" width="400"/><br>
+  <span style="text-align: center;">Kết quả huấn luyện mô hình FOMO</span>
+</p>
 
-
+*Kết quả chạy thử nghiệm
+![](./imagereadme/imagereadme12.png)
+![](./imagereadme/imagereadme13.png)
 
 ## 🚀 Tính năng
 - Chạy mô hình **Edge Impulse FOMO** trên ESP32-CAM (ESP32-S chip, có PSRAM).
@@ -92,8 +97,7 @@ Sketch → Include Library → Add .ZIP Library.
 - Tối ưu cho **low-latency**:
   - Dùng **ảnh đơn /jpg** (mỗi lần request một ảnh) → tránh blocking như MJPEG stream.
   - Inference và web server chạy trên **hai core** độc lập.
-![](./imagereadme/imagereadme12.png)
-![](./imagereadme/imagereadme13.png)
+
 ---
 
 ## 📂 Cấu trúc code
@@ -131,11 +135,4 @@ Cài qua **Library Manager**:
 
 ---
 
-## 🔧 Cấu hình
-Trong code, chỉnh thông tin Wi-Fi:
-```cpp
-const char* ssid = "YOUR_WIFI_SSID";
-const char* password = "YOUR_WIFI_PASSWORD";
 
-
-#
