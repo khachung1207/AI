@@ -51,11 +51,11 @@ https://raw.githubusercontent.com/espressif/arduino-esp32/gh-pages/package_esp32
 **Bước 2:** Trong Arduino chọn Examples -> EloquentEsp32cam -> Collect_Images_for_EdgeImpulse
 ![ảnh](./imagereadme/Screenshot2025-09-04210521.png)
 
-Dùng example trong WebCamServer để collect data. Có thể download chương trình arduino tại đây [link](...)
+Dùng example trong WebCamServer để collect data. Có thể download [CameraWebServer](./CameraWebServer) để chụp ảnh
 Tiếp theo, sẽ Thu thập dataset để train trên edge impulse ![](./imagereadme/imagereadme2.png)
 
 ---
-và truy cập  [Edgeimpulse.com](Edgeimpulse.com) để upload dataset.
+và truy cập  [https://docs.edgeimpulse.com/](https://docs.edgeimpulse.com/) để upload dataset.
 
 
 ![](./imagereadme/imagereadme3.png)
@@ -66,13 +66,15 @@ ta có thể tìm thấy tùy chọn “Data Acquisition”. Khi nhấp vào đ�
 ![](./imagereadme/imagereadme6.png)
 
 **Bước 4: Creating Impulse** 
-Chúng ta sẽ tiến hành tạo một impulse theo quy trình của Edge Impulse. Điều này có nghĩa là chúng ta sẽ thực hiện cấu hình cơ bản để Edge Impulse có thể lấy dữ liệu thô đã thêm ở bước trước, sau đó áp dụng xử lý tín hiệu (signal processing) nhằm trích xuất các đặc trưng, và cuối cùng sử dụng khối học máy (learning block) để phân loại dữ liệu mới.
+Chúng ta sẽ tiến hành tạo một impulse theo quy trình của Edge Impulse. Điều này có nghĩa là sẽ thực hiện cấu hình cơ bản để Edge Impulse có thể lấy dữ liệu thô đã thêm ở bước trước, sau đó áp dụng xử lý tín hiệu (signal processing) nhằm trích xuất các đặc trưng, và cuối cùng sử dụng khối học máy (learning block) để phân loại dữ liệu mới.
 
 **Bước 5: Generating Features**
-Vào object detection chọn learning rate 0.01 model FOMO & MobileNet V2 0.1 (thỏa mãn yêu cầu F1-Score và latency)
+Vào **Object detection** chọn learning rate 0.01 model FOMO & MobileNetV2 0.1 (thỏa mãn yêu cầu **F1-Score** và **latency**)
 ![](./imagereadme/imagereadme7.png)
 
 ![](./imagereadme/imagereadme8.png)
+
+---
 **Nhận xét về kết quả huấn luyện mô hình**
 
 Hình trên thể hiện kết quả đánh giá mô hình sau khi huấn luyện với định dạng nén Quantized (int8) nhằm tối ưu bộ nhớ.
