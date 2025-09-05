@@ -3,10 +3,50 @@
 Dự án này triển khai mô hình **FOMO (Faster Objects, More Objects)** được huấn luyện bằng [Edge Impulse](https://edgeimpulse.com) để nhận diện và **đếm số người trong lớp học** bằng **ESP32-CAM**.  
 Kết quả hiển thị qua **WebServer** với ảnh từ camera và số người được cập nhật theo thời gian thực.
 
+### Thư viện Arduino ESP32 Ai Thinker CAM cho Nhận diện Người
+
+Đây là một thư viện tương thích Arduino, hỗ trợ **nhận diện người theo thời gian thực** sử dụng **Ai Thinker ESP32 CAM module**.  
+Thư viện được tích hợp với **OpenCV** và **YOLO** nhằm mang lại khả năng nhận diện người dựa trên AI một cách hiệu quả, phục vụ cho các ứng dụng **IoT** và **tự động hóa**.
+
+---
+
+#### 🔹 🚀Tính năng
+- **Nhận diện người theo thời gian thực** với ESP32 Ai Thinker CAM module.  
+- Hỗ trợ các mô hình phát hiện đối tượng **OpenCV** và **YOLO**.  
+- Thích hợp cho các tác vụ **tự động hóa** như nhà thông minh, an ninh, giám sát, v.v.  
+- Dễ dàng tích hợp với **Arduino IDE** để triển khai nhanh chóng.  
+
+---
+
+#### 🛠 Yêu cầu phần cứng
+- ESP32-CAM (khuyên dùng module **AI Thinker**).
+- Thẻ nhớ MicroSD (tuỳ chọn).
+- USB-UART để nạp code.
+
+---
+
+#### 📦 Yêu cầu phần mềm
+- **Arduino IDE**  
+
+- **ESP32 Board Core** (v2.0.4):  
+  Vào `File` → `Preferences` → Thêm vào URL: 
+```https
+https://raw.githubusercontent.com/espressif/arduino-esp32/gh-pages/package_esp32_index.json 
+```
+- Thư viện **Ai Thinker ESP32 CAM**  
+
+---
+
+#### 🔹 Bắt đầu sử dụng
+1. Cài đặt **Arduino IDE** và bổ sung ESP32 Board Package.  
+2. Kết nối ESP32-CAM với máy tính thông qua USB to TTL Serial Adapter.  
+3. Import thư viện **Ai Thinker ESP32 CAM** vào Arduino IDE.  
+4. Tải và chạy các ví dụ mẫu để kiểm chứng khả năng nhận diện người theo thời gian thực.  
+
 ---
 
 **Bước 1:** Cài đặt thư viện
-![](./imagereadme/imagereadme5.png)
+![](./imagereadme/imagereadme15.png)
 
 **Bước 2:** Trong Arduino chọn Examples -> EloquentEsp32cam -> Collect_Images_for_EdgeImpulse
 ![ảnh](./imagereadme/Screenshot2025-09-04210521.png)
@@ -71,68 +111,37 @@ Sau đó sẽ build model và tải file .zip về
 Sketch → Include Library → Add .ZIP Library.
 
 **2.** Chọn tập tin .zip đã tải về từ Edge Impulse, ví dụ như của tôi là 
-*ei-final-test-arduino-1.0.1.zip* hoặc bạn có thể [tại đâychưa có link](...)
+*ei-final-test-arduino-1.0.1.zip*, có thể bạn train lại dataset nhận diện người hoặc bạn có thể tải library [tại đây](./ei-final-test-arduino-1.0.1.zip).
 
 **3.** Arduino IDE sẽ tự động cài đặt thư viện. Sau khi hoàn tất, bạn có thể kiểm tra bằng cách vào lại Sketch → Include Library, tên thư viện sẽ xuất hiện trong danh sách.
 
-**4.** Sau đó mở ví dụ mẫu (Example) từ thư viện vừa cài đặt và chọn esp32_camera để chạy thử nghiệm.
+**4.** Sau đó mở ví dụ mẫu (Example) từ thư viện vừa cài đặt và chọn esp32_camera để chạy thử nghiệm. Bạn có thể download [code này](./detect_person_model) đẫ được tối ưu chạy và ghi nhận kết quả.
+
 
 ![](./imagereadme/imagereadme11.png)
 <p align="center">
-  <img src="./imagereadme/imagereadme14.png" alt="Kết quả huấn luyện mô hình FOMO" width="400"/><br>
+  <img src="./imagereadme/imagereadme14.png" alt="Kết quả huấn luyện mô hình FOMO" width=""/><br>
   <span style="text-align: center;">Kết quả huấn luyện mô hình FOMO</span>
 </p>
 
-*Kết quả chạy thử nghiệm
-![](./imagereadme/imagereadme12.png)
-![](./imagereadme/imagereadme13.png)
+---
+***Quá trình huấn luyện mô hình thông qua hai biểu đồ:**
+<p align="center">
+  <img src="./imagereadme/imagereadme12.png" alt="Kết quả huấn luyện mô hình FOMO" width=""/><br>
+  <span style="text-align: center;">Sự thay đổi giá trị Training Loss và Validation Loss theo số epoch</span>
+</p>
+<p align="center">
+  <img src="./imagereadme/imagereadme13.png" alt="Kết quả huấn luyện mô hình FOMO" width=""/><br>
+  <span style="text-align: center;">Sự biến thiên của các chỉ số Precision, Recall và F1-score theo thời gian huấn luyện.</span>
+</p>
 
-## 🚀 Tính năng
-- Chạy mô hình **Edge Impulse FOMO** trên ESP32-CAM (ESP32-S chip, có PSRAM).
-- Cập nhật **số người (person count)** từ inference.
-- Web giao diện:
-  - Hiển thị ảnh từ camera (`/jpg`).
-  - Hiển thị số người đếm được (`/count` JSON).
-  - Trang chính `/` tự động hiển thị ảnh và cập nhật số người mỗi giây.
-- Tối ưu cho **low-latency**:
-  - Dùng **ảnh đơn /jpg** (mỗi lần request một ảnh) → tránh blocking như MJPEG stream.
-  - Inference và web server chạy trên **hai core** độc lập.
+Có thể thấy Training Loss và Validation Loss đều giảm theo thời gian, cho thấy mô hình học tốt từ dữ liệu. Các chỉ số Precision, Recall và F1-score đều đạt mức cao và duy trì ổn định sau khoảng 40 epoch, chứng tỏ mô hình có khả năng phân loại hiệu quả và đáng tin cậy. Nhìn chung, mô hình đã đạt chất lượng tốt và hoàn toàn đáp ứng yêu cầu triển khai thực tế.
+
+
 
 ---
 
-## 📂 Cấu trúc code
-- `inferenceTask()`: chạy mô hình Edge Impulse liên tục (core 0).
-- `handleRoot()`: render giao diện web HTML + JS.
-- `handleJPG()`: trả về một ảnh JPEG.
-- `handleGetCount()`: trả về số người ở dạng JSON.
-- `ei_camera_capture()`: xử lý ảnh từ camera, resize thành input cho mô hình (96x96).
 
----
 
-## 🛠 Yêu cầu phần cứng
-- ESP32-CAM (khuyên dùng module **AI Thinker**).
-- Thẻ nhớ MicroSD (tuỳ chọn).
-- USB-UART để nạp code.
-
----
-
-## 📦 Cài đặt phần mềm
-
-### 1. Arduino IDE
-- Arduino IDE 1.8.x hoặc 2.x.
-- ESP32 Board Core (>= v2.0.4):  
-  Vào `File` → `Preferences` → Thêm vào URL:  
-
-- Chọn board: **ESP32 Wrover Module**  
-- Partition Scheme: **Huge APP (3MB No OTA/1MB SPIFFS)**
-
-### 2. Thư viện Arduino
-Cài qua **Library Manager**:
-- `WiFi`
-- `WebServer`
-- `esp32-camera`
-- Edge Impulse C++ SDK (được export trong thư mục dự án `src/`)
-
----
 
 
